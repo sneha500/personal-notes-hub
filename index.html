@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal Notes Hub - organize and manage your notes">
+    <title>Personal Notes Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="topbar">
+        <a href="#" class="brand">✦ Notes Hub</a>
+
+        <div class="header-actions">
+            <button id="themeBtn" class="secondary-btn"
+                    type="button" aria-label="Toggle dark mode">
+                🌙 Dark Mode
+            </button>
+
+            <button id="exportBtn" class="secondary-btn" type="button">
+                ↓ Export
+            </button>
+
+            <button id="importBtn" class="secondary-btn" type="button">
+                ↑ Import
+            </button>
+
+            <input type="file" id="importFile"
+                   accept=".json,application/json" hidden>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="welcome">
+            <p class="eyebrow">YOUR PERSONAL WORKSPACE</p>
+            <h1>All your thoughts, in one place.</h1>
+            <p class="subtitle">
+                Capture ideas, organize your work, and stay productive.
+            </p>
+        </section>
+
+        <section class="stats">
+            <article class="stat-card">
+                <span>Total Notes</span>
+                <strong id="totalCount">0</strong>
+            </article>
+
+            <article class="stat-card">
+                <span>Pinned Notes</span>
+                <strong id="pinnedCount">0</strong>
+            </article>
+
+            <article class="stat-card">
+                <span>Categories</span>
+                <strong id="categoryCount">0</strong>
+            </article>
+        </section>
+
+        <section class="editor">
+            <h2 id="formHeading">Create a new note</h2>
+
+            <form id="noteForm">
+                <label for="noteTitle">Note title</label>
+                <input
+                    type="text"
+                    id="noteTitle"
+                    placeholder="e.g. Java interview preparation"
+                    maxlength="100"
+                    required
+                >
+
+                <label for="noteContent">Note content</label>
+                <textarea
+                    id="noteContent"
+                    placeholder="Write your thoughts here..."
+                    rows="5"
+                    maxlength="10000"
+                    required
+                ></textarea>
+
+                <div class="form-row">
+                    <div class="field">
+                        <label for="noteCategory">Category</label>
+                        <select id="noteCategory">
+                            <option value="Study">Study</option>
+                            <option value="Work">Work</option>
+                            <option value="Personal">Personal</option>
+                            <option value="Ideas">Ideas</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="noteColor">Note color</label>
+                        <select id="noteColor">
+                            <option value="lavender">Lavender</option>
+                            <option value="mint">Mint</option>
+                            <option value="peach">Peach</option>
+                            <option value="blue">Blue</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" id="saveBtn" class="primary-btn">
+                        + Add Note
+                    </button>
+
+                    <button type="button" id="cancelBtn"
+                            class="secondary-btn" hidden>
+                        Cancel Edit
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <section class="notes-section">
+            <div class="section-heading">
+                <div>
+                    <h2>Your Notes</h2>
+                    <p class="subtitle">Search and organize your collection.</p>
+                </div>
+            </div>
+
+            <div class="toolbar">
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="🔎 Search notes..."
+                    aria-label="Search notes"
+                >
+
+                <select id="categoryFilter" aria-label="Filter category">
+                    <option value="All">All Categories</option>
+                    <option value="Study">Study</option>
+                    <option value="Work">Work</option>
+                    <option value="Personal">Personal</option>
+                    <option value="Ideas">Ideas</option>
+                </select>
+
+                <select id="sortSelect" aria-label="Sort notes">
+                    <option value="updated">Recently Updated</option>
+                    <option value="created">Recently Created</option>
+                    <option value="title">Title A–Z</option>
+                </select>
+            </div>
+
+            <div id="notesGrid" class="notes-grid" aria-live="polite"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Personal Notes Hub · Built with HTML, CSS and JavaScript</p>
+    </footer>
+</body>
+</html>
